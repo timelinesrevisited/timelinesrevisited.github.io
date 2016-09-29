@@ -380,6 +380,13 @@ margin: 5px 25px 15px 25px;
   text-align: justify;
 }
 
+img {
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+  box-shadow: 1px 1px 3px 0px grey;
+}
+
 #project-one-column .authors {
 font-size: 17px;
 }
