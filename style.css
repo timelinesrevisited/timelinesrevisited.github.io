@@ -204,8 +204,10 @@ padding: 0 0 0 0px;
 /* Main page (index) */
 
 #left-column {
-width: 120px;
+width: 100px;
 float: left;
+position: fixed;
+font-size: 12px;
 background: #dddddd;
 border-radius:10px 0px 0px 10px;
 padding: 10px 10px 10px 10px;
@@ -219,7 +221,11 @@ text-align:right;
 #left-column .people-thumb {
 float:right;
 margin: 0px 0px 10px 0px;
-width: 120px;
+width: 100px;
+}
+
+.people-thumb img {
+  width: 100px;
 }
 
 .gif_container {
