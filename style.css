@@ -206,7 +206,6 @@ padding: 0 0 0 0px;
 #left-column {
 width: 100px;
 float: left;
-position: fixed;
 font-size: 12px;
 background: #dddddd;
 border-radius:10px 0px 0px 10px;
