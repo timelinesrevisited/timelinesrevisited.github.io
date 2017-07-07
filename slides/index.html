@@ -1,0 +1,907 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Timelines Revisited</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+				
+				<section data-background="assets/main_SVG_invert.png" data-state="dimbg">
+					
+					<h2>Timelines Revisited:</h2>
+					<hr>
+					<h4>Considerations for Expressive Storytelling</h4>
+					<p>
+						<small><a href="http://mattbrehmer.github.io" target="_blank">Matthew Brehmer</a> &middot; Microsoft Research &middot; <a href="http://twitter.com/mattbrehmer" target="_blank">@mattbrehmer</a></small>
+					</p>
+					<p>
+						<small>July 2017</small>
+					</p>
+
+					<aside class="notes">
+						<p>Thought history, people have been recording sequences of events so that they could tell stories about the past.</p>
+						<p>Today, I am going to talk about VISUAL Representations of these sequences of events, about TIMELINES and the different types of stories that they tell.</p>
+						<p>I’m going to show you a lot of design choices, give you a structured way to think about this design space, and then I’m going to introduce a new tool for creating
+						expressive timeline stories.</p>
+					</aside>
+
+				</section>
+
+				<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+				<section data-background="assets/main_SVG_invert.png" data-state="dimbg">
+							
+					<section>
+						
+						<h4>Representing <span style="color:yellow">Time</span> in Space</h4>
+
+						<aside class="notes">
+							<p>In order to talk about timelines, we need to begin with thinking about time itself, and specifically about how people use spatial metaphors when visualizing time.</p>
+							<p>Because I am speaking to a room of people interested in visualization, we’re likely pretty good when it comes to thinking about time spatially, given how often we think about mapping
+the dimension of time to coordinates on a screen or on a printed page.</p>						
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section>
+						
+						<h4>Where is:</h4>
+						<p><span class="fragment"><span style="color:yellow">Yesterday</span>?</span></p>
+						<p><span class="fragment"><span style="color:yellow">The Big Bang</span>?</span></p>
+						<p><span class="fragment"><span style="color:yellow">The 2050s</span>?</span></p>
+						<p><span class="fragment"><span style="color:yellow">Dinner time</span>?</span></p>
+						<p><span class="fragment"><span style="color:yellow">Now</span>?</span></p>
+						<p><span class="fragment"><span style="color:yellow">The Triassic Period</span>?</span></p>
+						<p><span class="fragment"><span style="color:yellow">Your 8th Birthday</span>?</span></p>
+						<p><span class="fragment"><span style="color:yellow">The 15th Century</span>?</span></p>
+
+						<aside class="notes">
+							<p>I’d like you to take a moment to ask yourself the questions that you see on screen here: WHERE are these moments in SPACE relative to you at this moment, if you were
+to draw them. Which direction is your future, and which direction is the past? And does your visual metaphor for time change depending upon the distance to the event?</p>
+							<p>I put these questions to you because the ability to visualize time in space is a skill that people have to learn and refine with practice; and this ability differs substantially
+from person to person, as we age, across cultures, and across contexts.</p>
+						</aside>	
+
+					</section>					
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->				
+					
+				</section>
+
+				<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+				<section>			
+
+					<section>
+
+						<h4>Some visual representations of <span style="color:yellow">time</span>:</h4>
+
+						<img class="white_img" width="160" height="160" data-src="assets/r-lin.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="160" height="160" data-src="assets/r-rad.png" alt="Radial" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="160" height="160" data-src="assets/r-spi.png" alt="Spiral" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="160" height="160" data-src="assets/r-cal.png" alt="Calendar" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="160" height="160" data-src="assets/r-arb.png" alt="Curve" style="margin:0px; background: none; border: none; box-shadow:none">
+						
+						<aside class="notes">
+							<p>Today I’m going to talk about some alternative representations for time, and hopefully give you a sense of when each is appropriate to use.</p>
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="assets/arrows.jpg">			
+
+						<span class="attribution">(CC) @librarianishish (flickr)</span>
+						
+						<aside class="notes">
+							<p>And I’ll begin with the most familiar, the “time-as-an-arrow” linear metaphor.</p>
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="#fff">		
+
+						<a href="https://commons.wikimedia.org/wiki/File:PriestleyChart.gif" target="_blank"><img src="assets/priestley.gif"></a>		
+
+						<span class="attribution">(PD) 1765, Joseph Pristley (Wikimedia Commons)</span>
+						
+						<aside class="notes">
+							<p>This representation has dominated the designs of timelines for several centuries, made popular by Joseph Priestley in his 'Chart of Biography', in which time is mapped
+from left to right; here he has drawn the lifespans of a number historical figures, offset vertically to avoid overdrawing. Otherwise there’s no meaning to the y axis aside
+from faceting the data with statesmen at the bottom and “men of learning” at the top.</p>
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="#fff">
+
+						<a href="http://13pt.com/projects/nyt110425/" target="_blank"><img src="assets/13pt-gitmo.jpg"></a>
+
+						<span class="attribution">&copy; 2011, Jonathan Corum (13pt) (<em>The New York Times</em>)</span>
+						
+						<aside class="notes">
+							Priestley’s design is still popular today, such as this timeline of Guantánamo detainees by Jonathan Corum for the New York Times, where each horizontal line indicates the time that an individual person was detained between 2002 and 2011.
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section>
+
+						<a href="https://www.tiki-toki.com/timeline/entry/137152/Tower-of-London-3D/" target="_blank"><img src="assets/tiki-toki.png"></a>
+
+						<span class="attribution">&copy; Webalon Ltd: (<a href="http://tiki-toki.com" target="_blank">tiki-toki.com</a>)</span>
+						
+						<aside class="notes">
+						<p>These cardinal directions for time work great in print and in static images for giving the observer a bird’s eye or omniscient view of time.</p>
+						<p>But another common mental model for time is egocentric, one that places the observer along the line of time.</p>
+						<p>And that the arrow of time is like a museum hallway that you can walk down and examine its contents.</p>
+						<p>And we see this egocentric view of time in timelines like this one depicting the history of the Tower of London, which is a bit like standing on a moving sidewalk at an
+airport, with time flying past you.</p>
+
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="assets/shenghunglin-clock.jpg">
+
+						<span class="attribution">(CC) @shenghunglin (flickr)</span>
+						
+						<aside class="notes">
+							Another common way that we represent time is the circle, especially when representing natural cycles and events that repeat.
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="#fff">
+
+						<img src="assets/wikimedia-life_cycle.png" height="580">
+
+						<span class="attribution">(PD) @LadyofHats (Wikimedia Commons)</span>
+						
+						<aside class="notes">
+							Like biological life cycles or the seasons of the year.
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<!--<section data-background="#fff">
+
+						<img src="assets/owaves-phelps.png" height="300">
+						<img src="assets/owaves-beyonce.png" height="300">
+						<img src="assets/owaves-clinton.png" height="300">
+
+						<span class="attribution">&copy; Owaves Inc. (<a href="http://owaves.com/day-plans/" target="_blank">owaves.com</a>)</span>
+						
+						<aside class="notes">
+							Or our daily routines depicting when we sleep, eat, work, exercise, and relax.
+						</aside>	
+
+					</section>-->
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="#fff">
+
+						<a href="http://dear-data.com/week-2-a-week-in-our-past/" target="_blank"><img src="assets/dear-data-22.jpg" height="580"></a>
+
+						<span class="attribution">&copy; Georgia Lupi (<a href="http://dear-data.com/week-2-a-week-in-our-past/" target="_blank">dear-data.com</a>)</span>
+						
+						<aside class="notes">
+							<p>But what if your data doesn't contain cycles or periodic repetition?</p>
+							<p>Can you still use a circular or radial representation?</p>
+							<p>This is Giorgia Lupi's circular depiction of her life history as part of the Dear Data project, with her birth at 12 o’clock and her current age at 11 o’clock;</p>
+							<p>at which point the timeline veers upwards and trails off into uncertainty and NOT back towards her birth, indicating discontinuity and non-cyclicality.</p>
+
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="assets/46704958@N07-spiral.jpg">
+
+						<span class="attribution">(CC) @46704958@N07 (flickr)</span>
+						
+						<aside class="notes">
+							But perhaps you’re inclined to see time as both linear AND cyclic, as a coil or a spring, something that repeats and yet spirals upwards or forwards.
+						</aside>	
+
+					</section>					
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="#fff">
+
+						<a href="http://spiral.rosslearningsystem.org/spiral" target="_blank"><img src="assets/ross.png" height="580"></a>
+
+						<span class="attribution">&copy; 2015 Ross Institute & Moebio Labs (<a href="http://spiral.rosslearningsystem.org/spiral" target="_blank">spiral.rosslearningsystem.org</a>)</span>
+						
+						<aside class="notes">
+							<p>This spiral metaphor is particularly effective for timelines depicting growth, like a vine wrapping around a column.</p>
+							<p>Take for instance these spiralling timelines that Moebio Labs created for the Ross Institute to emphasize the interconnectedness, repetition, and growth that occurs in a K-12 education curriculum.</p>
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="assets/27659329@N05-slinky.jpg">
+
+						<span class="attribution">(CC) @27659329@N05 (flickr)</span>
+						
+						<aside class="notes">
+							Spirals, at least to me, remind me of the slinky toy, and the slinky adds a new dimension to how we visually manipulate time: that’s the ability to bend it, compress it, or expand it.
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="assets/26639011@N06-accordion.jpg">
+
+						<span class="attribution">(CC) @26639011@N06 (flickr)</span>
+						
+						<aside class="notes">
+							Or if you prefer a linear analog, there’s the accordion, which is another metaphor that we use often in laying out collapsable elements in a user interface.
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<!--<section data-background="#fff">
+
+						<img src="assets/wikimedia-mercator.jpg" height="580">
+						<img src="assets/mercator-2.png" height="580">
+
+						<span class="attribution">L: (PD) Wikimedia. R: Mercator’s Chronology (1569). Reference: <em>Cartographies of Time</em> (2010) by Rosenberg & Grafton</span>
+						
+						<aside class="notes">
+						<p>You can similarly imagine collapsing representations of time.</p>
+						<p>Gerardus Mercator, of map projection fame, also dabbled in the art of chronology, and his is a page from his Chronology from the late 16th century. His contribution was to indicate a more precise passing of time the margins next to written descriptions of events,</p>
+						
+						<p>he used fewer tick marks for the sparse periods of history where no events were recorded, and more tick marks when a precise date was known for an event.</p>
+						<p>Looking at this now, you could imagine collapsing these sparse periods of history using interaction and animation, but still retain some visual indication that time has elapsed.</p>
+						</aside>	
+
+					</section>-->
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="#fff">
+
+						<img src="assets/Catholic-Ladder-2.jpg" height="580">
+						<img src="assets/Catholic-Ladder-crop.jpg" height="580">
+
+						<span class="attribution">Blanchett's <em>Catholic Ladder</em> (1838). Reference: <em>Cartographies of Time</em> (2010) by Rosenberg & Grafton</span>
+						
+						<aside class="notes">
+							<p>One approach to collapsing time is to use an alternative representation for different temporal granularities.</p>
+							<p>This is a timeline that missionaries used in the mid 19th century to teach Native Americans about the history of Christianity, where they indicated years as dots and centuries as lines.</p>
+							<p>Understandably, they used this approach to abridge the time elapsed between biblical creation and Christ, and between the founding of Christianity and the start of the 19th century.</p>
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<!--<section data-background="#fff">
+
+						<iframe src="https://player.vimeo.com/video/223796543?loop=1&title=0&byline=0&portrait=0" width="640" height="293" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+						<span class="attribution">Data from <a href="http://aoml.noaa.gov" target="_blank">aoml.noaa.gov</a>.</span>
+						
+						<aside class="notes">
+							<p>To illustrate this idea, here I’ve drawn a timeline of 50 years of Category 5 hurricanes from 1960 to 2010, beginning with Donna in the early 60s and Katrina in the 2000s.</p>
+							<p>I can collapse this chronological timeline but retain the sequential order between them, and then show the time elapsed hurricanes with these bars, which appears to indicate that the time between severe hurricanes has been getting shorter over this 50 year period.</p>
+
+						</aside>	
+
+					</section>-->
+					
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="assets/studiocurve-calendar.jpg">
+
+						<span class="attribution">(CC) @studiocurve (flickr)</span>
+						
+						<aside class="notes">
+							<p>Calendars also encode different granularities of time in different ways, albeit in a nested structure of day cells within week rows within month polygons.</p>
+							<p>Like radial representations, calendars are good for showing repeating patterns and deviations from these patterns, particularly when these patterns correspond to culturally agreed-upon conventions of weekdays and weekends, months, and quarters.</p>
+						</aside>	
+
+					</section>
+
+						<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="#fff">
+
+						<img src="assets/lklein-peabody.png" height="580">
+
+						<span class="attribution">Peabody’s <em>Polish American System of Chronology</em> (mid 19th century). Reference: Klein et al. (2016) <a href="http://shapeofhistory.net" target="_blank">shapeofhistory.net</a></span>
+						
+						<aside class="notes">
+							<p>In a way, the calendar is like a bookshelf, where each shelf might be a week with seven books it.</p>
+							<p>But the shelf-calendar metaphor works for larger granularities of time, like decades, centuries, and millennia.</p>
+							<p>One instantiation of this shelf metaphor is is Elizabeth Peabody's Polish American system of chronology from the mid-19th-century, which she proposed as an aid for teaching history, where each is century a 10 by 10 grid, each decade is a row and each cell a year, colored and patterned in according to the type of events that occurred in that year.</p>
+							<p>If you're interested in learning more about this approach, I suggest checking out an interactive revival of Peabody’s method by Lauren Klein and her colleagues in the digital humanities lab at Georgia Tech, at shapeofhistory.net</p>
+
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="#fff">
+
+						<img src="assets/twain-cover.gif" height="300">
+						<img src="assets/twain.gif" height="300">
+						<img src="assets/twain3.gif" height="300">
+
+						<span class="attribution">M. Twain (1914). "How to make history dates stick". <em>Harper's Monthly Magazine</em></span>
+
+						<aside class="notes">
+							<p>And the last form of representation for time that I want to talk about is much less restrained by shape.</p>
+							<p>These playful curved timelines are by Mark Twain, which like Peabody’s system, he proposed as a mnemonic aid for remembering dates using illustrative shapes.</p>
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="#fff">
+
+						<a href="aconteur.net/infographics/the-worlds-greatest-storyteller" target="_blank"><img src="assets/storyteller.jpg"></a>
+
+						<span class="attribution">&copy; "<em>The world’s greatest storyteller</em>" (2014). <a href="aconteur.net/infographics/the-worlds-greatest-storyteller" target="_blank">Raconteur.net</a></span>
+
+						<aside class="notes">
+							<p>A century later these curvy timelines are still popular, even if their shape doesn't serve as mnemonic. The curve may simply be the best way to fill up a page.</p>
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section>
+
+						<h4>Some visual representations of <span style="color:yellow">time</span>:</h4>
+
+						<img class="white_img" width="160" height="160" data-src="assets/r-lin.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="160" height="160" data-src="assets/r-rad.png" alt="Radial" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="160" height="160" data-src="assets/r-spi.png" alt="Spiral" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="160" height="160" data-src="assets/r-cal.png" alt="Calendar" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="160" height="160" data-src="assets/r-arb.png" alt="Curve" style="margin:0px; background: none; border: none; box-shadow:none">
+						
+						<aside class="notes">
+							So I just took you on a brief and certainly incomplete tour of different spatial metaphors for time, and I showed a several examples of TIMELINES.
+						</aside>	
+
+					</section>
+
+				</section>			
+
+				<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->				
+
+				<section>
+							
+					<section>
+						
+						<h4>What is a <span style="color:yellow">Timeline</span> For?</h4>
+
+						<aside class="notes">
+							The visual metaphor or representation of time is ONLY ONE aspect of the timeline design space. You also need to consider what a timeline is for, and how different combinations of REPRESENTATIONS and TIME SCALES tell different stories.
+						</aside>	
+
+					</section>
+
+						<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section>
+
+					<table>						
+						<tbody>
+							<tr>
+								<td>What happened when?</td>
+								<td><img class="white_img" width="75" height="75" data-src="assets/noun-olsjoe-timeline.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none"></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>When and how much?</td>
+								<td><img class="white_img" width="75" height="75" data-src="assets/noun-mabusafiah-line.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none"></td>
+								<td><img class="white_img" width="75" height="75" data-src="assets/noun-mabusafiah-area.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none"></td>
+							</tr>
+							<tr>
+								<td>Where, what, and when?</td>
+								<td><img class="white_img" width="75" height="75" data-src="assets/noun-makeiev-path.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none; filter: invert(100%)"></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>What was related when?</td>
+								<td><img class="white_img" width="75" height="75" data-src="assets/noun-barracuda-network.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none"></td>
+								<td><img class="white_img" width="75" height="75" data-src="assets/noun-barracuda-network-2.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none"></td>
+							</tr>
+							<tr>
+								<td>What if and when?</td>
+								<td><img class="white_img" width="75" height="75" data-src="assets/noun-ratch0013-flow.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none"></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+
+						<span class="attribution">Noun Project icons (CC): @olsjoe, @mabusafiah, @makeiev, @barracuda, @ratch0013</span>
+						
+						<aside class="notes">
+							So what is a timeline for? One way to go about answering this question is to try to distinguish the purpose of a timeline from other chart types that answer different questions involving time-oriented data.
+						</aside>	
+
+					</section>					
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section>
+
+					<table>						
+						<tbody>
+							<tr>
+								<td><span style="color:yellow">What happened when?</span></td>
+								<td><img width="75" height="75" data-src="assets/noun-olsjoe-timeline-ffff00.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none"></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><span style="color:grey"><strike>When and how much?</strike></span></td>
+								<td><img class="white_img" width="75" height="75" data-src="assets/noun-mabusafiah-line.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none"></td>
+								<td><img class="white_img" width="75" height="75" data-src="assets/noun-mabusafiah-area.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none"></td>
+							</tr>
+							<tr>
+								<td><span style="color:grey"><strike>Where, what, and when?</strike></span></td>
+								<td><img class="white_img" width="75" height="75" data-src="assets/noun-makeiev-path.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none; filter: invert(100%)"></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><span style="color:grey"><strike>What was related when?</strike></span></td>
+								<td><img class="white_img" width="75" height="75" data-src="assets/noun-barracuda-network.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none"></td>
+								<td><img class="white_img" width="75" height="75" data-src="assets/noun-barracuda-network-2.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none"></td>
+							</tr>
+							<tr>
+								<td><span style="color:grey"><strike>What if and when?</strike></span></td>
+								<td><img class="white_img" width="75" height="75" data-src="assets/noun-ratch0013-flow.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none"></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+
+						<span class="attribution">Noun Project icons (CC): @olsjoe, @mabusafiah, @makeiev, @barracuda, @ratch0013</span>
+						
+						<aside class="notes">
+							<p>My simple answer is that a timeline serves to communicate WHAT happened WHEN.</p>
+							<p>Meanwhile, a line or area chart tells you HOW MUCH over time; a trajectory map combines WHERE, WHAT, and WHEN; dynamic graphs, or family trees will tell you about how entities were related over time, and flow charts answers the question of “WHAT IF?" over time, in which time can branch.</p>
+							<p>Of course, there are many instances in which a timeline is shown in conjunction with other chart types, or you may develop a custom chart that combines these in a novel way.</p>
+						</aside>	
+
+					</section>					
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section>
+
+						<h4><span style="color:yellow">What happened when?</span></h4>
+
+						<hr/>
+
+						<p>
+						<small>In what sequence did the events occur?</small>
+						</p>
+						<p>
+							<small>How long were the events?</small>
+						</p>
+						<p>
+							<small>Did events A and B co-occur?</small>
+						</p>
+						<p>
+							<small>When did events A and B occur relative to event C?</small>
+						</p>
+						
+						<aside class="notes">
+							<p>But if we focus on the deceptively simple question of “WHAT HAPPENED WHEN?” and try to take it apart, we arrive at more questions, like:</p>
+							<p>In what sequence did events occur? For how long did they occur? Did event A and event B co-occur? And when did they occur relative to a common baseline, say event C?</p>
+						</aside>	
+
+					</section>					
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section>						
+
+						<a href="https://www.flickr.com/photos/accurat/sets/72157633953437972/" target="_blank"><img src="assets/accurat-painters.jpg"></a>
+
+						<span class="attribution">&copy; 2013 Accurat</span>
+						
+						<aside class="notes">
+							As an example let’s look this set of timelines depicting the lives of notable 20th century painters, by Accurat, Where each lifespan, artistic period, travel, and romantic conquest for each of these painters is positioned according to a common chronological scale.
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section>						
+
+						<iframe src="https://player.vimeo.com/video/224361737?loop=1&title=0&byline=0&portrait=0" width="640" height="420" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>					
+						<aside class="notes">
+							<p>Here I've redrawn Salvador Dali's biography based on the original Accurat graphic.</p>
+							<p>You can see his artistic periods like Surrealism and Dada and his travel to places like Paris.</p>
+							<p>And here is Matisse now shown alongside him. Using a common chronological scale, you notice that were born at different times, and you can see when their respective Cubist and Abstract periods took place and how they might have influenced one another.</p>
+							<p>When I change the scale to one relative their birth dates, you can now more easily compare the age at which they started their art career, how long they lived; and point out similarities like how they both traveled to Paris in their early 30s,</p>
+							<p>or I can filter this data and remove the aspect of chronological duration altogether, retaining just a sequential ordering of their artistic periods.</p>
+							<p>Ultimately, each of these transformations resulted in a different timeline, telling a different story.</p>
+						</aside>	
+
+					</section>					
+					
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+				</section>
+
+				<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+				<section>
+
+					<section>
+						
+						<h4>A Timeline <span style="color:yellow">Design Space</span></h4>
+
+						<aside class="notes">
+							So, there are several design choices that go into telling stories with timelines.
+						</aside>	
+
+					</section>
+							
+					<section data-background="#fff" >
+
+						<img src="assets/design_space.png">
+						
+						<aside class="notes">
+							<p>There’s representation, as well as different scales like the absolute chronological scale, relative scales, log scales, and sequential scales.</p>
+							<p>And a third consideration which I’ll refer to as “Layout”, which has to do with deciding between a single timeline, faceting into multiple timelines, or wrapping a timeline into meaningful segments of time.</p>
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="#fff">
+
+						<p>
+							<small>journal paper + survey + example galleries at <a href="http://timelinesrevisited.github.io/supplemental/gallery/gallery.png" target="_blank">timelinesrevisited.github.io</a></small>
+						</p>
+
+						<a href="http://timelinesrevisited.github.io/supplemental/gallery/gallery.png" target="_blank"><img src="assets/gallery.png"></a>
+						
+						<aside class="notes">
+							<p>And in case you’re worried about the huge combinatorial space of design choices. Not to worry!</p>
+							<p>we wrote a journal paper about the timeline design space. We conducted a survey of over 250 timelines and timeline tools,</p>
+							<p>and then we identified 20 combinations of design choices that correspond to feasible perceptual tasks and meaningful narrative goals or intents,</p>
+							<p>as well as aesthetic tradeoffs and comments about aspect ratios.</p>
+							<p>And you can browse both the survey and galleries of examples at timelinesrevisited.github.io.</p>
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+				</section>
+
+				<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->				
+
+				<section>
+							
+					<section data-background="assets/main_SVG_invert.png" data-state="dimbg">
+						
+						<h4><span style="color:yellow">Storytelling</span> With Timelines</h4>
+
+						<aside class="notes">
+							<p>So now that we’re equipped with design choices, I arrive at the question of storytelling and how you can tell stories with timelines in a dynamic medium;</p>
+							<p>how you can combine different points in this design space?</p>
+							<p>how can you leverage interactivity, animation, and annotation to tell these stories, to incrementally reveal parts of a narrative and make different types of comparisons, which you already saw a preview of in my Dali vs. Matisse story.</p>
+
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="#fff">				
+						
+						<a href="http://timeglider.com/timeline/line_cialeak" target="_blank"><img src="assets/timeglider.png"></a>
+
+						<span class="attribution">&copy; (2010) Mnemograph LLC: <a href="http://timeglider.com/" target="_blank">timeglider.com</a></span>
+
+						<aside class="notes">
+							At one end of the storytelling spectrum, there's presenting an interactive choose-your-own adventure timeline, and there are quite a few tools out there that present timelines in this way, like this one called Timeglider. But these open-ended exploratory tools don’t guarantee that your story was communicated to the viewer; they are fine for open-ended data analysis, and there are certainly quite a few data analysis tools that look like this, but these tools don't guide the attention of the viewer along a narrative.						</aside>	
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section data-background="#fff">				
+						
+						<a href="https://timeline.knightlab.com/examples/user-interface/index.html" target="_blank"><img src="assets/timelinejs.png"></a>
+
+						<span class="attribution">&copy; (2013) Northwestern University Knight Lab: <a href="http://timeline.knightlab.com/" target="_blank">TimelineJS</a></span>
+
+						<aside class="notes">
+							At the other end of the storytelling spectrum, you can reveal a timeline as a slideshow in the linear, left-to-right chronological order in which the events occur, which is theapproach taken by timeline presentation tools like Timeline.js, a popular presentation tool from the Northwestern University Knight Lab.
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section>
+						
+					<h4><span style="color:yellow">chronological</span>:</h4>
+					<p>
+						<small>Dali&#769; was born, THEN he started painting, THEN moved to Paris, &hellip;</small>
+					</p>
+					<hr>
+					<h4><span style="color:yellow">non-chronological</span>:</h4>
+					<p>
+						<small>Dali&#769; lived in Paris during his Surrealist period, &hellip; MEANWHILE, Matisse was in Italy, &hellip; , <br/>YEARS EARLIER, he too lived in Paris, &hellip;</small>
+					</p> 
+
+					<aside class="notes">
+						<p>But let's consider how stories unfold in written language, which don’t always stick to a linear chronological ordering of events.</p>
+						<p>I could have walked you through Dali’s life story chronologically.</p>
+						<p>But instead I focused on some of his artistic periods, and then I compared aspects of his life to those of Matisse, and then I talked about some commonalities in their past.</p>
+					</aside>	
+
+				</section>
+
+				<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->		
+
+				</section>
+
+				<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->	
+
+				<section>
+						
+					<h4><span style="color:yellow">Expressive Storytelling</span> With Timelines</h4>
+					<hr>
+					<p>
+						<small>Support for chronological or non-chronological narratives</small>
+					</p>
+					<p>
+						<small>Choice of representations for time</small>
+					</p>
+					<p>
+						<small>Choice of time scales</small>
+					</p>
+
+					<aside class="notes">
+						<p>So if we are to tell compelling stories with timelines, our tools need to be more flexible and expressive.</p>
+							<p>For some stories, a chronological introduction of events makes sense, while for others it does not, like in my earlier example of comparing the life of Dali with that of Matisse.</p>
+							<p>And similarly, given the range of ways that we visually represent and scale time, our storytelling tools shouldn’t be constrained to linear representations and chronological time scales.</p>
+					</aside>	
+
+				</section>
+
+				<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->				
+
+				<section>
+							
+					<section data-background="assets/main_SVG_invert.png" data-state="dimbg">
+						
+						<h4><a href="https://timelinestoryteller.com" target="_blank">Timeline Storyteller</a></h4>
+						<hr>
+						<p>
+						<small>Support for chronological or non-chronological narratives</small>
+						</p>
+						<p>
+							<small>Choice of representations for time</small>
+						</p>
+						<p>
+							<small>Choice of time scales</small>
+						</p>
+						<p>
+							<small>Annotate, emphasize, reveal</small>
+						</p>						
+
+						<aside class="notes">
+							<p>Expressive storytelling with timelines is the goal of Timeline Storyteller, an open-source presentation tool that my colleagues and I released a few months ago, and I’ve used this tool to generate several of the examples that you’ve seen so far in this talk.</p>
+							<p>This is a scene-based presentation tool that runs in the web browser, where for in each scene in a story, the author can choose to hide, reveal, emphasize, an annotate part of their timeline, and choose a new representation or time scale to better suit their narrative intent.</p>	
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->		
+
+					<section>
+						
+						<iframe src="https://player.vimeo.com/video/223796935?loop=1&title=0&byline=0&portrait=0" width="640" height="420" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						
+						<aside class="notes">
+							<p>Let’s look at how it works. So when I open Timeline Storyteller I begin with this dialog where I can load my own JSON or CSV tabular data. In this example, I’ll recreate the Dali vs. Matisse story I showed earlier.</p>
+							<p>Each row in this dataset describes an event. Since I’m going to facet these events to compare different painters, I have a FACET column containing the painter’s name, an event category, a start date, some events like lifespans and artistic periods also have end dates, and an event description that I’ll use for text annotations.</p>
+							<p>When I load this data in Timeline Storyteller, I first get a summary of what’s in my data, its chronological range, the categories of events, and the facets in my dataset.</p>
+							<p>And when I initially draw the data I get a single linear, chronological timeline. This isn’t faceted yet by painter, so I select a faceted layout to split this into individual timelines for each facet.</p>
+							<p>Next I want to filter what I see to focus on Dali and Matisse, so I use a filtering control to hide the facets that I don’t want.</p>
+							<p>I can then click on events to annotate them, and I can position these annotations wherever I want.</p>
+						<p>And when I’m satisfied, I can record this as a scene, which appears down in my scene navigator.</p>
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section>
+						
+						<iframe src="https://player.vimeo.com/video/223796950?autoplay=1&loop=1&title=0&byline=0&portrait=0" width="640" height="420" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						
+						<aside class="notes">
+							I can then change the scale to one relative to the beginning of the first event in each facet, allowing me to align Dali and Matisse according to their birth, I can annotate again, and record this as a new scene in my story.
+						</aside>
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->	
+
+					<section>
+						
+						<iframe src="https://player.vimeo.com/video/223796987?autoplay=1&loop=1&title=0&byline=0&portrait=0" width="640" height="420" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						
+						<aside class="notes">
+							<p>Next I’ll change the representation. I can also annotate in other ways, by adding captions and images to a scene, and like event annotations I can position these where I want.</p>
+							<p>And finally, I can export these scenes as PNG or SVG images, as an animated GIF, or I can toggle a presentation mode to present my sequence of scenes.</p>
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->						
+
+				</section>
+
+				<section>
+
+					<h4><a href="https://timelinestoryteller.com" target="_blank">timeline storyteller</a> for <a href="https://powerbi.microsoft.com/en-us/" target="_blank">Power BI</a>: A Demo Story</h4>
+					
+					<a href="https://msit.powerbi.com/view?r=eyJrIjoiMTZjNTUzNDgtZDA3Ny00ZTgwLWFhOTMtYzk4NDM4MzFhZDBiIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9" target="_blank"><iframe width="680" height="510" src="https://msit.powerbi.com/view?r=eyJrIjoiMTZjNTUzNDgtZDA3Ny00ZTgwLWFhOTMtYzk4NDM4MzFhZDBiIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9" frameborder="0" allowFullScreen="true"></iframe></a>
+					
+					<aside class="notes">
+					</aside>	
+
+				</section>
+
+				<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+				<section>
+						
+						<h4>The <span style="color:yellow">Timeline</span> Design Space</h4>
+						<p>
+							<small>Different combinations of timeline representation and scale <br> tell different stories about your data.</small>
+						</p>
+
+						<hr/>
+
+						<span class="fragment">
+						<h4><span style="color:yellow">Storytelling</span> Considerations</h4>
+						<p>
+							<small>Don't limit the story by using a single design space combination.</small>
+						</p>
+						<p>
+							<small>Use animated transitions and annotation for incremental reveal,<br> and to connect consecutive narrative points.</small>
+						</p>
+						</span>
+
+						<aside class="notes">
+							<p>I want to finish by reiterating that despite the apparent simplicity of the question of "what happened when?", I've hopefully communicated the richness of the timeline design space in terms of different visual representations and time scales,</p>
+							<p>and this design space grows even richer when we introduce dynamic storytelling elements like incremental reveal, selective annotation and highlighting, and animated transitions between points in the design space.</p>
+						</aside>	
+
+					</section>
+
+					<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+					<section>
+						
+						<h4>Collaborators:</h4>
+
+						<p>
+							<small>Bongshin Lee, Nathalie Henry Riche, Tamara Munzner, Benjamin Bach,</small>
+						</p>
+						<p>
+							<small>Darren Edge, Chris White, David Tittsworth, and Kate Lytvynets.</small>
+						</p>
+						
+						<hr/>
+
+						<h4>More Information:</h4>
+						<ul>
+							<li><small><a href="https://timelinesrevisited.github.io" target="_blank">timelinesrevisited.github.io</a>: IEEE TVCG paper + survey website</small></li>
+							<li><small><a href="https://timelinestoryteller.com" target="_blank">timelinestoryteller.com</a>: open-source tool for web and <a href="https://powerbi.microsoft.com/en-us/" target="_blank">Power BI</a></small></li>
+							<li><small><a href="https://openvisconf.com" target="_blank">OpenVisConf 2017</a>: "<em><a href="https://openvisconf.com/#mbrehmer-video-item">What Story Does Your Timeline Tell?</a>"</em></small></li>
+							<li><small><a href="https://gihtub.com/TimelineConsortium" target="_blank">gihtub.com/TimelineConsortium</a>: toward a standard for timeline data</small></li>
+						</ul>				
+
+						<hr/>
+
+						<p>
+							<small><a href="http://mattbrehmer.github.io" target="_blank">Matthew Brehmer</a> &middot; Microsoft Research &middot; <a href="http://twitter.com/mattbrehmer" target="_blank">@mattbrehmer</a></small>
+						</p>
+
+						<aside class="notes">
+							<p>The projects that I spoke about today wouldn't have been possible without the help of my colleagues.</p>
+							<p>Once again, all of the research behind this talk is at timelinesrevisited.github.io,</p>
+							<p>And you can go to timelinestoryteller.com to create your own timeline stories. As researchers, we’re interested in studying what stories you create using the tool, as well as collaborating with you to create compelling stories.</p>
+							<p>Finally, if you're interested in joining a discussion about the open challenges with respect to timelines and standards for timeline data, I'd invite you to join a timeline consortium supported by the Sloan Foundation and HarvardX.</p>
+							<p>With that, thank you very much and I look forward to seeing your own timeline stories.</p>
+						</aside>	
+
+					</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				progress: false,
+				slideNumber: true,
+				showNotes: false,
+				mouseWheel: true,
+				transition: 'fade',
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
