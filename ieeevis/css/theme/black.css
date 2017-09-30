@@ -201,7 +201,7 @@ body {
 
 .reveal small {
   display: inline-block;
-  font-size: 0.4em;
+  font-size: 0.5em;
   line-height: 1.2em;
   vertical-align: top;
   font-weight: 100; }
@@ -213,14 +213,14 @@ body {
   color: gold;
   font-variant: small-caps;
   font-weight: bolder;
-  font-size: 0.6em;
+  font-size: 0.8em;
   line-height: 1.0em;
   vertical-align: top;
   font-weight: 500;
 }
 
 .body_span {
-  font-size: 0.6em;
+  font-size: 0.8em;
   line-height: 1.2em;
   font-weight: 100;
 }
