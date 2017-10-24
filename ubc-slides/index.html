@@ -1,0 +1,896 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Timelines Revisited @ UBC 17-10-24</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+		<link href="//cdnjs.cloudflare.com/ajax/libs/cc-icons/1.2.1/css/cc-icons.min.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+		<link href="font-awesome.min.css" rel="stylesheet">	
+		<link rel="shortcut icon" href="favicon.ico" />
+
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!--SECTION: INTRO-->
+				
+				<section data-background="assets/dimbg.png" data-state="dimbg">
+					
+					<h2>Timelines Revisited</h2>
+					<hr>
+					<h4>A Design Space and <br>Considerations for Expressive Storytelling</h4>
+					<small><a href="http://mattbrehmer.github.io" target="_blank">Matthew Brehmer</a> &middot; Microsoft Research &middot; <a href="http://twitter.com/mattbrehmer" target="_blank">@mattbrehmer</a>
+					<br><br><em>in collaboration with</em><br><br> Bongshin Lee &middot; Benjamin Bach &middot; Nathalie Henry Riche &middot; Tamara Munzner</small>
+
+					<!-- <img class="white_img" width="80" height="80" data-src="assets/HCI.png" alt="HCI@MSR" style="margin:0px; background: none; border: none; box-shadow:none">
+					<img class="white_img" width="80" height="80" data-src="assets/ubc.png" alt="University of British Columbia" style="margin:0px; background: none; border: none; box-shadow:none"> -->
+
+					<span class="attribution"><a href="http://dx.doi.org/10.1109/TVCG.2016.2614803" target="_blank">IEEE TVCG 2017</a> &middot; 10-24-2017 @ UBC CPSC 547 &middot; <i class="cc cc-cc"></i> slides: <a href="https://timelinesrevisited.github.io/ubc-slides/">timelinesrevisited.github.io/ubc-slides</a>  </span>
+
+					<aside class="notes">
+						Thank you. 
+						Throughout history, people have recorded events on timelines; 
+						<br><br>and the space of timeline design choices is remarkably varied.
+						
+					</aside>
+
+				</section>				
+
+				<!--SECTION: REPRESENTATION-->				
+
+				<section>			
+
+					<section>
+
+						<span class="fragment fade-out" data-fragment-index="1">
+							<h4>A Timeline <span style="color:gold">Design Space</span></h4>
+						</span>
+						
+						<span class="small_emph">representation</span>
+						<br>
+						<img class="white_img" width="120" height="120" data-src="assets/r-lin.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/r-rad.png" alt="Radial" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/r-spi.png" alt="Spiral" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/r-cal.png" alt="Calendar" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/r-arb.png" alt="Curve" style="margin:0px; background: none; border: none; box-shadow:none">
+						<br>
+						<span class="fragment fade-out" data-fragment-index="1">
+							<span class="small_emph">scale</span>
+							<br>
+							<img class="white_img" width="120" height="120" data-src="assets/s-chron.png" alt="Chronological" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/s-rel.png" alt="Relative" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/s-log.png" alt="Logarithmic" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/s-seq.png" alt="Sequential" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/s-intdur.png" alt="Collapsed" style="margin:0px; background: none; border: none; box-shadow:none">
+							<br>
+						<span class="small_emph">layout</span>
+						<br>
+							<img class="white_img" width="120" height="120" data-src="assets/l-uni.png" alt="Unified" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/l-fac.png" alt="Faceted" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/l-seg.png" alt="Segmented" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/l-facseg.png" alt="Faceted and Segmented" style="margin:0px; background: none; border: none; box-shadow:none">
+						</span>
+						
+						<aside class="notes">
+							Today I'm going to introduce you to a structured way to think about this design space.
+							<br><br><span style="color:red">CLICK</span>: and I'm glad to be speaking in the 'Time and Space' session, because I'll begin with a primer on SPATIAL metaphors for time.
+							<br><br>and these icons correspond to some of most common representations appearing in the design of timelines, which is the first dimension of our design space. 
+						</aside>	
+
+					</section>					
+
+					<!--SUBSECTION-->
+
+					<section data-background="#fff">		
+
+						<img data-src="assets/priestley.gif">		
+
+						<span class="attribution">Image: <a href="https://commons.wikimedia.org/wiki/File:PriestleyChart.gif" style="color:cornflowerblue;" target="_blank"><i class="cc cc-pd"></i> Joseph Priestley (1765)</a></span>
+						
+						<aside class="notes">
+							Perhaps the most common representation for time is linear: the time as an arrow metaphor.
+							<br><br>What you see here is part of Joseph Priestley's '<em>Chart of Biography</em> published over 250 years ago,
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="#fff">		
+							
+						<img data-src="assets/priestley-annotated.gif">		
+
+						<span class="attribution">Image: <a href="https://commons.wikimedia.org/wiki/File:PriestleyChart.gif" style="color:cornflowerblue;" target="_blank"><i class="cc cc-pd"></i> Joseph Priestley (1765)</a></span>
+						
+						<aside class="notes">
+							Here time is mapped from left to right (the years are BCE here); you can see the lifespans of a number historical figures, offset vertically to avoid overdrawing. 
+							<br><br>Otherwise there’s no meaning to the verical placement aside from faceting the data with statesmen at the bottom and "men of learning" at the top.
+							<br><br>This left-to-right linear representation of time remains popular today, but it is certainly not the only way to present a set of events.
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="assets/shenghunglin-clock.jpg">
+
+						<span class="attribution">Image: <a href="https://flic.kr/p/ditnGo" style="color:cornflowerblue;" target="_blank"><i class="cc cc-cc"></i> <i class="cc cc-nc"></i> <i class="cc cc-nd"></i> flickr/shenghunglin</a></span>
+						
+						<aside class="notes">
+						Another common way to represent time is the circle.
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="#fff">
+
+						<img data-src="assets/wikimedia-life_cycle.png" height="580">
+
+						<span class="attribution">Image: <a href="https://en.wikipedia.org/wiki/Biological_life_cycle" style="color:cornflowerblue;" target="_blank"><i class="cc cc-pd"></i> LadyofHats (Wikimedia Commons)</a></span>
+						
+						<aside class="notes">
+						 Radial representations are especially effective when presenting and highlighting natural cycles and events that repeat,
+						 <br><br>Like biological life cycles or the seasons of the year.
+						</aside>	
+
+					</section>
+					
+					<!--SECTION-->
+					
+					<section data-background="#fff">
+							
+						<img data-src="assets/dear-data-22.jpg" height="580">
+
+						<span class="attribution">Image: &copy; Georgia Lupi (<a href="http://dear-data.com/week-2-a-week-in-our-past/" target="_blank">dear-data.com</a>)</span>
+						
+						<aside class="notes">
+							<p>But what if your data doesn't contain cycles or periodic repetition?</p>
+							<p>Can you still use a circular or radial representation?</p>
+							<p>This is Giorgia Lupi's circular depiction of her life history as part of the Dear Data project, with her birth at 12 o’clock and her current age at 11 o’clock;</p>
+							<p>at which point the timeline veers upwards and trails off into uncertainty and NOT back towards her birth, indicating discontinuity and non-cyclicality.</p>
+
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="assets/46704958@N07-spiral.jpg">
+
+						<span class="attribution">Image: <i class="cc cc-cc"></i> flickr/46704958@N07</span>
+						
+						<aside class="notes">
+							But of course time is both linear AND cyclic, like this staircase, something that repeats and yet coils upwards or forwards.
+							<br><br>Spirals are certainly another way to represent time, though one that is less common than the line or the circle.
+						</aside>	
+
+					</section>					
+
+					<!--SUBSECTION-->
+
+					<section data-background="#fff">
+						
+						<img data-src="assets/ross.gif" height="580">
+
+						<span class="attribution">&copy; 2015 Ross Institute & Moebio Labs (<a href="http://spiral.rosslearningsystem.org/spiral" target="_blank">spiral.rosslearningsystem.org</a>)</span>
+						
+						<aside class="notes">
+							<p>This spiral metaphor is particularly effective for timelines depicting growth, like a vine wrapping around a column.</p>
+							<p>Take for instance these spiralling timelines that Moebio Labs created for the Ross Institute to emphasize the interconnectedness, repetition, and growth that occurs in a K-12 education curriculum.</p>
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="assets/27659329@N05-slinky.jpg">
+						
+						<span class="attribution"><i class="cc cc-cc"></i> flickr/27659329@N05</span>
+						
+						<aside class="notes">
+							Spirals, at least to me, remind me of the slinky toy, and the slinky adds a new dimension to how we visually manipulate time: that’s the ability to bend it, compress it, or expand it.
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="assets/26639011@N06-accordion.jpg">
+
+						<span class="attribution"><i class="cc cc-cc"></i> flickr/26639011@N06</span>
+						
+						<aside class="notes">
+							Or if you prefer a linear analog, there’s the accordion, which is another metaphor that we use often in laying out collapsable elements in a user interface.
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="#fff">
+						
+						<img data-src="assets/Catholic-Ladder-2.jpg" height="580">
+						<img data-src="assets/Catholic-Ladder-crop.jpg" height="580">
+
+						<span class="attribution">Blanchett's <em>Catholic Ladder</em> (1838). Reference: <a href="https://www.papress.com/html/product.details.dna?isbn=9781616890582" target="_blank"><em>Cartographies of Time</em></a> (2010) by Rosenberg & Grafton</span>
+						
+						<aside class="notes">
+							<p>One approach to collapsing time is to use an alternative representation for different temporal granularities.</p>
+							<p>This is a timeline that missionaries used in the mid 19th century to teach Native Americans about the history of Christianity, where they indicated years as dots and centuries as lines.</p>
+							<p>Understandably, they used this approach to abridge the time elapsed between biblical creation and Christ, and between the founding of Christianity and the start of the 19th century.</p>
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="assets/studiocurve-calendar.jpg">
+
+						<span class="attribution">Image: <a href="https://flic.kr/p/2a3hQ" style="color:cornflowerblue;" target="_blank"><i class="cc cc-cc"></i> </i><i class="cc cc-nc"></i> <i class="cc cc-nd"></i> flickr/studiocurve</a></span>
+						
+						<aside class="notes">
+							Yet another representation for time is the grid, often manifested as a calendar.
+							<br><br>Like radial representations, calendars are good for showing repeating events and deviations from patterns of events, 
+							<br><br>especially when these patterns correspond to conventions of weekdays and weekends, and months.
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="#fff">
+						
+						<img data-src="assets/lklein-peabody.png" height="580">
+
+						<span class="attribution">Peabody’s <em>Polish American System of Chronology</em> (mid 19th century). Reference: Klein et al. (2016): <a href="http://shapeofhistory.net" target="_blank">shapeofhistory.net</a></span>
+						
+						<aside class="notes">
+							<p>In a way, the calendar is like a bookshelf, where each shelf might be a week with seven books it.</p>
+							<p>But the shelf-calendar metaphor works for larger granularities of time, like decades, centuries, and millennia.</p>
+							<p>One instantiation of this shelf metaphor is is Elizabeth Peabody's Polish American system of chronology from the mid-19th-century, which she proposed as an aid for teaching history, where each is century a 10 by 10 grid, each decade is a row and each cell a year, colored and patterned in according to the type of events that occurred in that year.</p>
+							<p>If you're interested in learning more about this approach, I suggest checking out an interactive revival of Peabody’s method by Lauren Klein and her colleagues in the digital humanities lab at Georgia Tech, at shapeofhistory.net</p>
+
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="#fff">
+
+						<img data-src="assets/twain-cover.gif" height="250">
+						<img data-src="assets/twain.gif" height="250">
+						<img data-src="assets/twain3.gif" height="250">
+
+						<span class="attribution">See "<a href="http://www.twainquotes.com/HistoryDates/HistoryDates.html" style="color:cornflowerblue;" target="_blank">How to make history dates stick</a>" by Mark Twain in <em>Harper's Monthly Magazine</em> (1914).</span>
+
+						<aside class="notes">
+							The last class of representation that I'll speak about is not restrained by a specific shape.
+							<br><br>These whimsical curved timelines were drawn by Mark Twain, which he proposed as a mnemonic aid for remembering dates using annotated curves.
+							<br><br>Many timeline infographics that we see today have this sort-of freeform board-game-like appearance, 
+							<br><br>though I can't say if they actually help people to remember events.   
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="#fff">
+						
+						<img data-src="assets/storyteller.jpg">
+
+						<span class="attribution">&copy; "<em>The world’s greatest storyteller</em>" (2014). <a href="aconteur.net/infographics/the-worlds-greatest-storyteller" target="_blank">Raconteur.net</a></span>
+
+						<aside class="notes">
+							<p>A century later these curvy timelines are still popular, even if their shape doesn't serve as mnemonic. The curve may simply be the best way to fill up a page.</p>
+						</aside>	
+
+					</section>
+
+					<section>
+
+						<h4>Common visual representations of <span style="color:gold">time</span>:</h4>
+
+						<img class="white_img" width="160" height="160" data-src="assets/r-lin.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="160" height="160" data-src="assets/r-rad.png" alt="Radial" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="160" height="160" data-src="assets/r-spi.png" alt="Spiral" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="160" height="160" data-src="assets/r-cal.png" alt="Calendar" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="160" height="160" data-src="assets/r-arb.png" alt="Curve" style="margin:0px; background: none; border: none; box-shadow:none">
+						
+						<aside class="notes">
+							So I just gave you a brief and certainly incomplete primer of different spatial metaphors for time, 
+							<br><br>and the first dimension in our design space.
+							<br><br>Now, before I introduce the second dimension, I want you to consider the following question:
+						</aside>	
+
+					</section>
+
+				</section>			
+
+				<!--SECTION: SCALE-->
+
+				<section>
+							
+					<section>
+						
+						<h4>What is a <span style="color:gold">Timeline</span> For?</h4>
+
+						<aside class="notes">
+							And that is, what is a timeline for?
+							<br><br>Why do we draw these in the first place?
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section>
+
+						<h4><span style="color:gold">What happened when?</span></h4>
+
+						<hr/>
+
+						<span class="fragment">
+						<span class="body_span">In what sequence did the events occur?</span>
+						<br>
+							<span class="body_span">How long did the events last?</span>
+						<br>
+							<span class="body_span">How long between event <span style="color:gold"><strong>A</strong></span> and event <span style="color:gold"><strong>B</strong></span>?</span>
+						<br>
+							<span class="body_span">Did <span style="color:gold"><strong>A</strong></span> and <span style="color:gold"><strong>B</strong></span> co-occur?</span>
+						<br>
+							<span class="body_span">When did <span style="color:gold"><strong>A</strong></span> and <span style="color:gold"><strong>B</strong></span> occur relative to event <span style="color:gold"><strong>C</strong></span>?</span>
+						</span>
+						
+						<aside class="notes">
+							Basically, a timeline communicates to the viewer "WHAT HAPPENED WHEN?". 
+							<br><br><span style="color:red">CLICK</span>: But if we unpack this question, a timeline can answer a number of more detailed questions, like:
+							<br><br>In what sequence did events occur? How long were they? Did event A and event B co-occur? And when did they occur relative to some baseline event, say event C?
+							<br><br>These questions relate to the second dimension of our design space, and that pertains to time scale. 
+						</aside>	
+
+					</section>		
+					
+					<!--SUBSECTION-->
+
+					<section>						
+
+						<h4>The Careers of U.S. Open Golf Champions</h4>
+
+						<img data-src="assets/johnson.jpg" height="400">
+						<img data-src="assets/furyk.jpg" height="400">
+
+						<span class="attribution"><i class="cc cc-cc"></i> Wikimedia Commons; L:  <a href="https://commons.wikimedia.org/wiki/File:Dustin_Johnson_2012(2).jpg">Dustin Johnson</a>; R: <a href="https://commons.wikimedia.org/wiki/File:Jim_Furyk.jpg">Jim Furyk</a></span>
+
+						<aside class="notes">
+							To illustrate these questions and the effects of different time scales, I'm going to talk about golf. 
+							<br><br>Specifially, I'm going to talk about professional golfers who at some point in their career, won the U.S. Open golf tournament, which is an annual event that dates back to 1895.
+							<br><br>I'm going to begin by focusing on the careers of Dustin Johnson and Jim Furyk, who won and placed 2nd, respectively, at the 2016 U.S. Open.
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="#fff">						
+
+						<h4>The Careers of U.S. Open Golf Champions</h4>
+
+						<!-- <iframe width="680" height="510" data-src="https://msit.powerbi.com/view?r=eyJrIjoiYzQ0MTAzZDgtZmUyNC00ZTMwLTgxNTItOWU0NTI2NzE3MTIzIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9" frameborder="0" allowFullScreen="true"></iframe> -->
+						
+						<iframe width="680" height="510" src="https://msit.powerbi.com/view?r=eyJrIjoiYzQ0MTAzZDgtZmUyNC00ZTMwLTgxNTItOWU0NTI2NzE3MTIzIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9" frameborder="0" allowFullScreen="true"></iframe>
+
+						<span class="attribution">Data source: <a href="https://en.wikipedia.org/wiki/U.S._Open_(golf)" style="color:cornflowerblue;" target="_blank">Wikipedia</a>. This data is also featured in this <a href="https://youtu.be/mmdqZXm0n-4?t=39m48s" style="color:cornflowerblue;" target="_blank">demo video</a>.</span>						
+
+						<aside class="notes">
+							<span style="color:red">MAX</span>: What you're seeing here are two timelines, Furyk's is on top, Johnson's on the bottom, indicating the results of every U.S. Open appearance in their respective careers.
+							<br><br>With red indicating a victory, gold indicating a finishing placement, and grey indicating that they were cut from the tournament after the first 36 holes.
+							<br><br><span style="color:red">NEXT</span>: You can see that Furyk has appeared at the U.S. Open for longer than Johnson, and that they both have only one victory to date under their belt.
+							<br><br><span style="color:red">NEXT</span>: In comparison, golf legend Ben Hogan appeared many times over the course of 4 decades, and he won an impressive four times during a six year span in the late 1940s / early 1950s.
+							<br><br><span style="color:red">NEXT</span>: Johnson and Furyk never played with Hogan, they were born at different times, and it's a bit unfair to compare a mid-career golfer and an early-career golfer to a legend like Hogan.
+							<br><br><span style="color:red">NEXT</span>: But by changing the scale to one that is relative to their births, we can see if Johnson or Furyk are on track to follow in Hogan's footsteps. 
+							<br><br>we can also see that Johnson and Furyk were about the same age when they won the U.S Open. 
+							<br><br>Hogan was older during his winning streak, but perhaps he would have won earlier during the gap in his early 30s, which corresponds to World War II and years that the tournament was cancelled.
+							<br><br><span style="color:red">NEXT</span>: Or we can remove relative chronology altogether and keep just the sequence of their U.S. Open appearances, where we learn that, coincidentally, all 3 golfers won in their 9th appearance.
+							<br><br><span style="color:red">NEXT</span>: And finally I can introduce you to another legend, Jack Nicklaus, who appeared more than 40 times, and his 4 victories were more spaced out than Hogan's. 
+						</aside>	
+
+					</section>					
+					
+				</section>
+
+				<!--SECTION: DESIGN SPACE-->
+
+				<section>
+
+					<section>
+						
+						<h4>A Timeline <span style="color:gold">Design Space</span></h4>							
+						
+						<aside class="notes">
+							So, now that I've shown you different representations and time scales, I want to summarize our design space.
+						</aside>	
+						
+					</section>
+
+					<!--SUBSECTION-->
+					
+					<section>
+
+						<h4>A Timeline <span style="color:gold">Design Space</span></h4>
+						<span class="fragment">
+							<span class="small_emph">5 representations:</span>
+							<br>
+							<img class="white_img" width="120" height="120" data-src="assets/r-lin.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/r-rad.png" alt="Radial" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/r-spi.png" alt="Spiral" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/r-cal.png" alt="Calendar" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/r-arb.png" alt="Curve" style="margin:0px; background: none; border: none; box-shadow:none">
+							<br>
+						</span>
+						<span class="fragment">
+							<span class="small_emph">5 scales:</span>
+							<br>
+							<img class="white_img" width="120" height="120" data-src="assets/s-chron.png" alt="Chronological" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/s-rel.png" alt="Relative" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/s-log.png" alt="Logarithmic" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/s-seq.png" alt="Sequential" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/s-intdur.png" alt="Collapsed" style="margin:0px; background: none; border: none; box-shadow:none">
+							<br>
+						</span>
+						<span class="fragment">
+						<span class="small_emph">4 layouts:</span>
+						<br>
+							<img class="white_img" width="120" height="120" data-src="assets/l-uni.png" alt="Unified" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/l-fac.png" alt="Faceted" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/l-seg.png" alt="Segmented" style="margin:0px; background: none; border: none; box-shadow:none">
+							<img class="white_img" width="120" height="120" data-src="assets/l-facseg.png" alt="Faceted and Segmented" style="margin:0px; background: none; border: none; box-shadow:none">
+						</span>
+						
+						<aside class="notes">
+							Our timeline design space has
+							<br><br><span style="color:red">CLICK</span>: Five representions, <span style="color:red">NEXT</span>: five scales, <span style="color:red">NEXT</span>: and third dimension which we call "Layout", or how to draw one or more timelines within a page or display: 
+							<br><br>this has to do with deciding between a single timeline, faceting into multiple timelines, like how I showed one timeline per golfer, 
+							<br><br>or wrapping a single timeline into meaningful segments of time, like a decade or a century.
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+				
+					<section>
+
+						<h4>The Careers of U.S. Open Golf Champions</h4>
+						<span class="small_emph">1 / 5 representations:</span>
+						<br>
+						<img class="white_img" width="120" height="120" data-src="assets/r-lin.png" alt="Linear" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/r-rad.png" alt="Radial" style="opacity: 0.1; margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/r-spi.png" alt="Spiral" style="opacity: 0.1; margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/r-cal.png" alt="Calendar" style="opacity: 0.1; margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/r-arb.png" alt="Curve" style="opacity: 0.1; margin:0px; background: none; border: none; box-shadow:none">
+						<br>
+
+						<span class="small_emph">3 / 5 scales:</span>
+						<br>
+						<img class="white_img" width="120" height="120" data-src="assets/s-chron.png" alt="Chronological" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/s-rel.png" alt="Relative" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/s-log.png" alt="Logarithmic" style="opacity: 0.1; margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/s-seq.png" alt="Sequential" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/s-intdur.png" alt="Collapsed" style="opacity: 0.1; margin:0px; background: none; border: none; box-shadow:none">
+						<br>
+						
+						<span class="small_emph">1 / 4 layouts:</span>
+						<br>
+						<img class="white_img" width="120" height="120" data-src="assets/l-uni.png" alt="Unified" style="opacity: 0.1; margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/l-fac.png" alt="Faceted" style="margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/l-seg.png" alt="Segmented" style="opacity: 0.1; margin:0px; background: none; border: none; box-shadow:none">
+						<img class="white_img" width="120" height="120" data-src="assets/l-facseg.png" alt="Faceted and Segmented" style="opacity: 0.1; margin:0px; background: none; border: none; box-shadow:none">
+						
+						<aside class="notes">
+							As a point of reference in terms of coverage of the design space, the golf demo I just gave spanned several scales while keeping representation and layout constant. 					
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section>
+							
+						<h4><span style="color:gold">Our process: Phase 1</span></h4>
+
+						<hr/>
+
+						<span class="fragment">											
+							<span class="body_span">Collect and categorize <span style="color:gold"><strong>145</strong></span> timelines and timeline tools.</span>
+						<br>
+							<small>Sources included <a href="https://www.papress.com/html/product.details.dna?isbn=9781616890582" target="_blank"><em>Cartographies of Time</em></a> (Rosenberg & Grafton), <br><a href="http://timeviz.net/" target="_blank"><em>Visualization of Time-Oriented Data</em></a> (Aigner <em>et al.</em>), <a href="http://lenagroeger.s3.amazonaws.com/talks/nicar-2015/timelines-nicar/timelines.html" target="_blank"><em>Making Timelines</em></a> (Groeger), ...</small>
+						</span>
+						
+						<aside class="notes">
+							So how did we come up with this design space? Well, 
+							<br><br><span style="color:red">CLICK</span>: First, we collected and categorized 145 timelines and timeline visualization tools from various sources, and out of that came the dimensions of the design space. 
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section>
+							
+						<h4><span style="color:gold">Our process: Phase 2</span></h4>
+
+						<hr/>
+
+						<span class="fragment">			
+								<span class="body_span">Validate with <span style="color:gold"><strong>118</strong></span> additional timelines (<span style="color:gold"><strong>263</strong></span> total).</span>
+							<br>
+								<small>Sources included <a href="https://visual.ly/view" target="_blank">visual.ly</a>, the <a href="https://www.informationisbeautifulawards.com/showcase" target="_blank">Kantar IIB Showcase</a>, <a href="http://massvis.mit.edu/" target="_blank">massvis.mit.edu</a>, ...</small>
+						</span>
+						<span class="fragment">
+							<br>
+								<span class="body_span">Implement points in the design space with <br><span style="color:gold"><strong>28</strong></span> representative datasets.</span>	
+							<br>
+								<small><a href="https://docs.google.com/spreadsheets/d/1WCPU93PmgoPFVAi7ff0tj2EGJyK097Qcv0vkXNJSTQk/edit?usp=sharing" target="_blank">Survey data</a> and <a href="https://github.com/TimelineConsortium/Timeline-Data" target="_blank">dataset</a> index can be found at <a href="https://timelinesrevisited.github.io" target="_blank">timelinesrevisited.github.io</a> </small>												</span>
+						</span>
+						<aside class="notes">							
+							<br><br><span style="color:red">CLICK</span>: Next, we verified that the design space could be used to label 118 additional timelines that we collected from different sources.
+							<br><br><span style="color:red">CLICK</span>: We also implemented points in the design space with 28 event datasets, which varied in a number of ways, such as the number of events, the temporal extent of the data, or the rate of event co-ocurrence. 
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="#fff">
+
+						<span class="body_span" style="color:#666;"><strong>20</strong> <em>purposeful</em>, <em>interpretable</em>, & <em>generalizable</em> <br>timeline designs at <strong><a href="http://timelinesrevisited.github.io/supplemental/gallery/gallery.png" target="_blank" style="color:black;">timelinesrevisited.github.io</a></strong></span>
+
+						<img data-src="assets/gallery.png" height="500">
+						
+						<span class="attribution"></span>
+						
+						<aside class="notes">
+							And this process of categorization and implementation also led us to identify 20 viable points in the design space, 
+							<br><br>or combinations of representation, scale, and layout that are:
+							<br><br><em>Purposeful</em> in terms of their communicative intent, <em>interpretable</em> in terms of which perceptual task the viewer is expected to make, and <em>generalizable</em> across a range of timeline datasets.
+							<br><br><span style="color:red">ZOOM</span>: This thumbnail gallery from our paper acts as a visual index for these 20 designs, and if you go to timelinesrevisited.github.io, 
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="#fff" data-transition="zoom">						
+							
+						<img data-src="assets/gallery-zoom.png" width="100%">
+						
+						<span class="attribution"></span>
+						
+						<aside class="notes">
+							You can see each of these example designs in detail along with a description of what narrative or communicative intent they serve.
+						</aside>	
+
+					</section>
+
+				</section>				
+
+				<!--SECTION: STORYTELLING-->
+
+				<section>						
+		
+					<!--SUBSECTION-->
+				
+					<section>
+							
+						<h4><span style="color:gold">Expressive Storytelling</span> With Timelines</h4>
+						<hr>
+						<span class="fragment">
+							<span class="body_span">Choice of representations and time scales</span>						
+						</span>
+						<span class="fragment">
+						<br>
+							<span class="body_span">Support for chronological or non-chronological narratives</span>
+						</span>
+
+						<aside class="notes">
+							So now that we have all of these design choices, how do we use these design choices to tell stories with timelines?
+							<br><br><span style="color:red">CLICK</span>: In other words, how do combine different points in this design space?
+							<br><br>This is important because despite the variety of ways that we visually represent and scale time, existing timeline presentation tools limit us linear representations and chronological time scales.
+							<br><br><span style="color:red">CLICK</span>: Existing tools also tend towards a chronological narrative: either the whole timeline is shown up front, so readers are likely to begin at the start of the timeline, or events are revealed in chronological order.
+							<br><br>For some stories, a chronological introduction of events makes sense, while for others it does not, like in my golf example, in which I revealed the careers of golf legends Ben Hogan and Jack Nicklaus later, adding context to the careers of current golfers.
+							<br><br>To achieve this expressive narrative design, we can make use of animation, highlighting, and annotation to incrementally reveal parts of a narrative and make new comparisons.
+						</aside>	
+	
+					</section>
+
+					<section data-background="#fff">				
+						
+						<h4>Other Timeline Tools: <a href="http://timeglider.com/" style="color:cornflowerblue;" target="_blank">Timeglider</a></h4>
+						<hr>
+						<img data-src="assets/timeglider.gif">
+
+						<span class="attribution">&copy; (2010) Mnemograph LLC: <a href="http://timeglider.com/" style="color:cornflowerblue;" target="_blank">timeglider.com</a></span>
+
+						<aside class="notes">
+							At one end of the storytelling spectrum, there's presenting an interactive choose-your-own adventure timeline, and there are quite a few tools out there that present timelines in this way, like this one called Timeglider. But these open-ended exploratory tools don’t guarantee that your story was communicated to the viewer; they are fine for open-ended data analysis, and there are certainly quite a few data analysis tools that look like this, but these tools don't guide the attention of the viewer along a narrative.						</aside>	
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="#fff">				
+						
+						<h4>Other Timeline Tools: <a href="http://timeline.knightlab.com/" style="color:cornflowerblue;" target="_blank">Timeline.JS</a></h4>
+						<hr>
+						<img data-src="assets/timelinejs.gif">
+
+						<span class="attribution">&copy; (2013) Northwestern University Knight Lab: <a href="http://timeline.knightlab.com/" style="color:cornflowerblue;" target="_blank">Timeline.JS</a></span>
+
+						<aside class="notes">
+							At the other end of the storytelling spectrum, you can reveal a timeline as a slideshow in the linear, left-to-right chronological order in which the events occur, which is theapproach taken by timeline presentation tools like Timeline.js, a popular presentation tool from the Northwestern University Knight Lab.
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section>
+						
+						<h4><span style="color:gold">Expressive Storytelling</span> With Timelines</h4>
+						<hr>
+						<span class="body_span">Choice of representations and time scales</span>						
+						<br>
+						<span class="body_span">Support for chronological or non-chronological narratives</span>
+
+						<aside class="notes">
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="#fff">
+							
+						<h4>The daily routines of famous creative people</h4>
+
+						<!-- <iframe width="680" height="510" data-src="https://msit.powerbi.com/view?r=eyJrIjoiYjczZDAyZjUtNWZmZS00NjM5LWIyNWYtZmYzZDEwZTczZDRlIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9" frameborder="0" allowFullScreen="true"></iframe> -->
+						<iframe width="680" height="510" src="https://msit.powerbi.com/view?r=eyJrIjoiYjczZDAyZjUtNWZmZS00NjM5LWIyNWYtZmYzZDEwZTczZDRlIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9" frameborder="0" allowFullScreen="true"></iframe>
+						
+						<span class="attribution">Inspired by infographics by <a href="https://podio.com/site/creative-routines" style="color:cornflowerblue;" target="_blank">Podio</a> and <a href="http://infowetrust.com/creative-routines/" style="color:cornflowerblue;" target="_blank">info we trust</a>; data source: <a href="https://www.goodreads.com/book/show/15799151-daily-rituals" style="color:cornflowerblue;" target="_blank"><em>Daily Rituals: How Artists Work</em></a> by <a href="http://masoncurrey.com/" style="color:cornflowerblue;" target="_blank">Mason Currey</a> (2013)</span>
+
+						<aside class="notes">
+							As a second example that ties all of this together, I'm going to present a story about the daily routines of famous creative people.
+							<br><br><span style="color:red">MAX</span>: What you see here is a set of radial timelines depicting a typical 24 hours in the lives of 26 writers, artists, composers, and the like.
+							<br><br>When they work, eat, sleep, exercise, and do other activities. 
+							<br><br><span style="color:red">NEXT</span>: A good starting point is to ask: when do creative people create? Are people similar in this regard?
+							<br><br>It looks as though some people prefer to work in short, focused bursts, like Darwin or Kant, while people like Murakami and Voltaire get up early and work for long uninterrupted periods of time. 
+							<br><br>Meanwhile, you have people like Kafka who work all night long. 
+							<br><br><span style="color:red">NEXT</span>: We can also ask about the relationship between sleep and creativity: how much? how often? and when do creative people sleep?
+							<br><br>Most people in this dataset sleep at night, with notable exceptions like Balzac who would turn in at 6pm, and Kafka, who just seemed to keep odd hours.
+							<br><br>What about variation and creativity? How often should you change activities if you want to be creative?
+							<br><br><span style="color:red">NEXT</span>: This chronological scale isn't the best way to convey the number or heterogeneity of activities, so let's transition to a sequential scale. 
+							<br><br><span style="color:red">NEXT</span>: To determine who varied the most and least, a linear representation is perhaps best, where we can easily see that Darwin has the most varied day of all the people in this dataset, 
+							<br><br>while Murakami prefers less variation.
+							<br><br><span style="color:red">NEXT</span>: Finally, we can restore chronology to compare these timelines just by scanning up and down, to spot synchronocities like who tends to work or sleep at the same time.
+							<br><br>And this is a good design choice to close with, to invite the viewer to compare their own daily rhythym to these creative people.
+						</aside>	
+
+					</section>
+
+				</section>
+
+				<!--SECTION: SUMMARY-->		
+				
+				<section>
+
+					<section>
+							
+						<h4>Summary: The <span style="color:gold">Timeline</span> Design Space</h4>
+						<hr>
+						<span class="body_span">Different combinations of timeline representation and scale <br> communicate different aspects of the data.</span>
+					
+						<aside class="notes">
+							I want to finish by reiterating that despite the apparent simplicity of the question of "what happened when?", 
+							<br><br>I've hopefully relayed the richness of the timeline design space in terms of different visual representations and time scales and their different communicative purposes,
+						</aside>	
+
+					</section>
+
+					<!--SECTION-->				
+
+					<section>
+							
+						<h4>Summary: <span style="color:gold">Storytelling</span> Considerations</h4>
+						<hr>
+						<span class="body_span">Use animated transitions, highlighting, and annotation<br> to incrementally reveal and connect narrative points.</span>
+						<br><br>
+						<span class="fragment">
+							<span class="body_span">Consider more than one point in the design space.</span>
+						</span>
+
+						<aside class="notes">
+							...and this design space grows even richer when we introduce dynamic storytelling elements like the incremental reveal, selective annotation and highlighting, 
+							<br><br><span style="color:red">NEXT</span>: and animated transitions between points in the design space.
+						</aside>	
+
+					</section>
+
+				</section>
+			
+				<!--SECTION: TIMELINE STORYTELLER-->
+
+				<section>
+
+					<section>
+							
+						<h4>Timelines Revisited . . . Revisited: <br><br>An <span style="color:gold">Epilogue</span></h4>
+
+						<aside class="notes">
+							And before I pause for questions, a brief epilogue.
+							<br><br>Our paper is based on work that took place in summer 2015, and much has happened since then.
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section data-background="assets/timelinestorytellercom.png">	
+												
+						<aside class="notes">
+							First, we developed and released Timeline Storyteller,
+							<br><br>the tool that I used to present the examples in this talk.							
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+							
+					<section>
+						
+						<span><a href="https://timelinestoryteller.com" target="_blank">timeline<span style="color:gold">storyteller</span>.com</a></span>
+						<hr>
+							<span class="body_span">Choice of representation, scale, layout, & narrative structure,</span>
+						<br>							
+							<span class="body_span">Initially released as <a href="https://github.com/Microsoft/timelinestoryteller" target="_blank">open-source</a> <a href="https://timelinestoryteller.com" target="_blank">web application</a>,</span>
+						<br>							
+							<span class="body_span">Now available as free add-on for <a href="https://powerbi.microsoft.com/en-us/blog/what-story-does-your-timeline-tell-introducing-the-timeline-storyteller-custom-visual-for-microsoft-power-bi/" target="_blank">Microsoft Power BI</a></span>
+						
+						<aside class="notes">
+							This tool, which you can use now at timelinestoryteller.com, realizes our design space and our proposed considersations for storytelling.
+							<br><br>We initially released it as an open-source web application in January.
+							<br><br>We recently released it as a free add-on to Microsoft Power BI, which allows you to publish iframes of timeline stories like I did in this talk
+						</aside>	
+
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section>
+						<h4>More Timeline Storyteller Stories</h4>
+						<hr>
+						<ul>
+							<li><span class="body_span"><em><a href="https://youtu.be/zaVGt-IbuhU?t=28m1s" target="_blank">A History of the UK National Trust</a></em><br>Microsoft Data Insights Summit 2017</span></li>
+							<li><span class="body_span"><em><a href="https://msit.powerbi.com/view?r=eyJrIjoiODY3Y2M0MDQtYTEyMi00MTZmLTkwMDYtZmYzYzljN2Y3NjQ3IiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9" target="_blank">A History of Artificial Intelligence</a></em> <br>Dublin Data Summit, Future of Storytelling Summit 2017</span></li>														
+							<li><span class="body_span"><em><a href="https://msit.powerbi.com/view?r=eyJrIjoiYjczZDAyZjUtNWZmZS00NjM5LWIyNWYtZmYzZDEwZTczZDRlIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9&pageName=ReportSection" target="_blank">The Daily Routines of Famous Creative People</a></em><br>Tapestry Conference 2017, OpenVisConf 2017, IEEE VIS 2017</span></li>							
+							<li><span class="body_span"><em><a href="https://msit.powerbi.com/view?r=eyJrIjoiNzZiZTFmZTktZjFiYy00ODgyLTk1NDMtMTQ1ZmYyYTgyNTAxIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9" target="_blank">When's The Next Solar Eclipse?</a><br>Seattle Uber Visualization Night, August 2017</em></span></li>
+							<li><span class="body_span"><em><a href="https://community.powerbi.com/t5/Data-Stories-Gallery/TV-Network-Ratings/m-p/253388" target="_blank">TV Network Ratings</a></em> by Pragmatic Works</span></li>
+							<li><span class="body_span"><em><a href="https://community.powerbi.com/t5/Data-Stories-Gallery/Tropical-Cyclones-Timeline-Storyteller/m-p/252648" target="_blank">Tropical Cyclones</a></em> by Manga Solutions</span></li>
+						</ul>					
+					</section>
+
+					<!--SUBSECTION-->
+					
+					<section>
+						<h4><a href="https://powerbi.microsoft.com/en-us/blog/what-story-does-your-timeline-tell-introducing-the-timeline-storyteller-custom-visual-for-microsoft-power-bi/" target="_blank">Timeline Storyteller Youtube Tutorial</a></h4>
+						<hr>
+						<iframe width="100%" height="510" data-src="https://www.youtube.com/embed/bwiMfwBVsSQ?rel=0&amp;showinfo=0&amp;start=977" frameborder="0" allowfullscreen></iframe>
+						<span class="attribution"><a href="https://powerbi.microsoft.com/en-us/blog/what-story-does-your-timeline-tell-introducing-the-timeline-storyteller-custom-visual-for-microsoft-power-bi/" target="_blank">powerbi.microsoft.com/blog/what-story-does-your-timeline-tell-introducing-the-timeline-storyteller-custom-visual-for-microsoft-power-bi/</a></span>
+					</section>
+
+					<!--SUBSECTION-->
+
+					<section>
+						<h4><a href="https://powerbi.microsoft.com/en-us/blog/what-story-does-your-timeline-tell-introducing-the-timeline-storyteller-custom-visual-for-microsoft-power-bi/" target="_blank">Timeline Storyteller on the Power BI Blog</a></h4>
+						<hr>
+						<blockquote>
+							<span class="body_span"><em>"When humans began transforming information and pictures to enhance understanding, two of the first things they visualized were space and time. <strong>Timeline Storyteller</strong> is the latest landmark in a tradition that spans centuries, and what a great accomplishment it is"</em></span>
+						</blockquote>
+						<small>- Alberto Cairo, <br>Knight Chair at the University of Miami</small>
+						<span class="attribution"><a href="https://powerbi.microsoft.com/en-us/blog/what-story-does-your-timeline-tell-introducing-the-timeline-storyteller-custom-visual-for-microsoft-power-bi/" target="_blank">powerbi.microsoft.com/blog/what-story-does-your-timeline-tell-introducing-the-timeline-storyteller-custom-visual-for-microsoft-power-bi/</a></span>
+					</section>
+				
+				</section>				
+
+				<!--SECTION: CONCLUSION-->
+
+				<section>
+
+					<section>
+					
+						<h4><span style="color:gold">Thanks</span></h4>
+						<hr/>
+							<span class="body_span"><strong>co-authors</strong>: Bongshin Lee, Benjamin Bach, <br>Nathalie Henry Riche, and Tamara Munzner.
+							<br><span class="small_emph">+</span>					
+							<br><span class="body_span"></span>Darren Edge, Chris White, David Tittsworth, Kate Lytvynets
+							<br><a href="https://www.microsoft.com/en-us/research/" target="_blank">Microsoft Research</a>, <a href="https://www.microsoft.com/en-us/research/group/human-computer-interaction/" target="_blank">HCI@MSR</a>,
+							<br>the <a href="http://www.cs.ubc.ca/group/infovis/" target="_blank">UBC InfoVis Group</a>, the <a href="https://github.com/TimelineConsortium" target="_blank">Timeline Consortium</a>,
+							<br><a href="https://powerbi.microsoft.com/en-us/" target="_blank">Microsoft Power BI</a>, & the <a href="https://powerbi.microsoft.com/en-us/datajournalism/" target="_blank">MSFT Data Journalism Program</a>.</span>
+						
+						
+						<aside class="notes">
+							Both this paper and Timeline Storyteller wouldn't have been possible without the help of my coauthors and colleagues at Microsoft and beyond.						
+						</aside>	
+
+					</section>	
+				
+					<!--SUBSECTION-->
+
+					<section>					
+							
+						<span><a href="https://timelinesrevisited.github.io" target="_blank">timelines<span style="color:gold">revisited</span>.github.io</a></span>
+							<br><span class="body_span">TVCG paper, slides, galleries, survey, datasets.</span>
+						<hr/>						
+						<span><a href="https://timelinestoryteller.com" target="_blank">timeline<span style="color:gold">storyteller</span>.com</a></span>
+							<br><span class="body_span"><a href="https://github.com/Microsoft/timelinestoryteller" target="_blank">open-source</a> tool for web & <a href="https://powerbi.microsoft.com/en-us/" target="_blank">Power BI</a>
+							</span>
+	
+						<hr/>
+	
+						<small><a href="mailto:mabrehme@microsoft.com">mabrehme@microsoft.com</a> &middot; <a href="http://mattbrehmer.github.io" target="_blank">mattbrehmer.github.io</a> &middot; <a href="http://twitter.com/mattbrehmer" target="_blank">@mattbrehmer</a></small>
+	
+						<aside class="notes">
+							Once again, you will find the paper and tons of supplemental material at timelinesrevisited.github.io,
+							<br><br>And you can go to timelinestoryteller.com to create your own timeline stories. 
+							<br><br>We’re interested in studying what stories you create using the tool, as well as collaborating with you to create compelling stories.
+							<br><br>With that, thank you very much and I look forward to your questions and comments.
+						</aside>	
+	
+					</section>					
+				</section>				
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				progress: false,
+				slideNumber: false,
+				showNotes: false,
+				mouseWheel: true,
+				history: true,
+				viewDistance: 3,
+				transition: 'fade',
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
